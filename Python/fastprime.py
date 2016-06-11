@@ -7,7 +7,7 @@ def isPrime(num, prime_list):
             if num % prime_no == 0:
                 return False
                 prev = prime_no
-            if num / prime_no < prev:
+            if num < (prev*prime_no):
                 break
     return True
 
