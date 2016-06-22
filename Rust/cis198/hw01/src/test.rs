@@ -2,6 +2,9 @@
 
 use problem1::{sum, dedup, filter};
 use problem2::mat_mult;
+use problem3::sieve;
+//use problem4::{hanoi, Peg};
+
 //
 // Problem 1
 //
@@ -34,6 +37,10 @@ fn test_filter_small() {
     assert_eq!(filter(&vs, &even_predicate), vec![2,4]);
 }
 
+//
+// Problem 2
+//
+
 #[test]
 fn test_mat_mult_identity() {
     let mut mat1 = vec![vec![0.;3]; 3];
@@ -48,4 +55,30 @@ fn test_mat_mult_identity() {
         }
     }
 }
+
+//
+// Problem 3
+//
+
+#[test]
+fn test_sieve_basic() {
+    assert_eq!(vec![2,3,5,7,11], sieve(12));
+}
+
+
+#[test]
+fn test_sieve_large() {
+    assert_eq!(vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47], sieve(50));
+}
+
+//
+// Problem 4
+//
+
+/*#[test]
+fn test_hanoi_1_disks() {
+    let result = hanoi(1, Peg::A, Peg::B, Peg::C);
+    assert_eq!(vec![(Peg::A, Peg::C)], result);
+    assert_eq!(1, result.len());
+}*/
 
