@@ -1,5 +1,7 @@
 import time
 
+
+
 def isPrime(num, prime_list):
     prev = 0
     if prime_list:
