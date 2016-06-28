@@ -11,4 +11,5 @@ fn main() {
     let gmean = (prod as f32).powf(0.1);
     let hmean = 10.0/recsum;
     println!("Average mean: {}, Geometric mean: {}, Harmonic mean: {}", avg, gmean, hmean);
+    assert!( ( (avg >= gmean) && (gmean >= hmean) ), "Incorrect calculation");
 }
