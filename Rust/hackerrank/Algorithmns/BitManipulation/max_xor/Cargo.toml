@@ -1,0 +1,6 @@
+[package]
+name = "max_xor"
+version = "0.1.0"
+authors = ["karbfg10k <karthik.natraj@gmail.com>"]
+
+[dependencies]

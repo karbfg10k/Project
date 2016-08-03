@@ -1,6 +1,6 @@
 use std::str;
 fn main() {
-    //Create new string
+    //Create new string pub
     let str = String::from("Hello world!");
     println!("{}", str);
     assert!(str == "Hello world!", "Incorrect string text");
@@ -23,7 +23,7 @@ fn main() {
     println!("String is:{}  and  Clone string is: {}", str, clone_str);
     assert!(clone_str == str, "Incorrect string creation");
 
-    //Copying, str won't be usable anymore, accessing it will cause a panic
+    //Copying, str won't be usable anymore, accessing it will cause a compiler failure
     let copy_str = str;
     println!("String copied now: {}", copy_str);
 
@@ -58,13 +58,13 @@ fn main() {
     let fin_str = str1.to_string() + str2;
     assert!( fin_str == "Hi There", "Error in concatenation");
 
-    //Joining strings requires a string and an &str or a two string one of which needs an & for coercion
+    //Joining strings requires a string and an &str or two strings, one of which needs an & for coercion
     let str1 = "Hi";
     let str2 = " There";
     let fin_str = str1.to_string() + str2;
     assert!( fin_str == "Hi There", "Error in concatenation");
     
-    //Splits - note Rust supports passing patterns to splits
+    //Splits -- note Rust supports passing patterns to splits
     let f_str = "Pooja and Sundar are up in Tumkur";
     let split_str: Vec<&str> = f_str.split(' ').collect();
     assert!( split_str == ["Pooja", "and", "Sundar", "are", "up", "in", "Tumkur"], "Error in string split");
