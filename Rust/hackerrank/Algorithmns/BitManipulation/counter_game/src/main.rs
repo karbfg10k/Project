@@ -12,16 +12,13 @@ fn main() {
 }
 
 fn find_winner(mut n: u64) -> String{
-    let mut win = 0;
-    while n>1{
-        if n.is_power_of_two(){
-            n /= 2;
-        }
-        else{
-            n -= n.next_power_of_two()/2;
-        }
-        win += 1;
-    }
+    
+    let win = 
+        if n > 0 {
+            n.count_ones() + n.trailing_zeros() - 1
+        } else {
+            0
+        };
     let winner = 
         if win % 2 == 0{
             String::from("Richard")
