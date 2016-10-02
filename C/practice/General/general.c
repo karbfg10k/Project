@@ -22,6 +22,7 @@ int find_gcd(int a, int b){
             b -= a;
     }
     return a;
+    return
 
 }
 void reduce_fractions(char** arr, int* str_size){
