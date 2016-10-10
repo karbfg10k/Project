@@ -21,18 +21,26 @@ int min(int a, int b);
 //Is power of 2
 bool is_power_of_2(int n);
 
+//Sign extend unknown width
+int sign_extend();
+
+//Conditionally set/clear bits
+unsigned int set_clear_bits(unsigned int num, unsigned int mask, bool flag);
+
 int main(){
-    printf("%d\n", is_power_of_2(1));
-    printf("%d\n", is_power_of_2(2));
-    printf("%d\n", is_power_of_2(-2));
+    printf("%u\n", set_clear_bits(3, 3, true));
+    printf("%u\n", set_clear_bits(3, 4, false));
     return 0;
+}
+
+unsigned int set_clear_bits(unsigned int num, unsigned int mask, bool flag){
+    return ( ( num & ~mask ) | ( -flag & mask ) );
 }
 
 bool is_power_of_2(int n){
      unsigned int x = int_abs(n);
      return x && !(x & (x - 1));
 }
-
 
 int max(int a, int b){
     //also a ^ ((a ^ b) & -(a < b));
