@@ -57,17 +57,48 @@ void merge_sort(struct node** head);
 //Split into 2 lists -> {1, 2, ,3, 4} becomes {1, 3} and {2, 4}
 void alt_split(struct node* source, struct node** a, struct node** b);
 
+//Insert into sorted list 1 into {2, 3, 5} -> {1, 2, 3, 5}
+void insert_sorted(struct node** head, struct node* new_node);
+
+//Insertion sort
+void insertion_sort(struct node** head);
+
 int main(){
     struct node* head = NULL;
     build_rand_list(&head, 10);
-    merge_sort(&head);
+    insertion_sort(&head);
     list_print(&head);
-    struct node* a = NULL;
-    struct node* b = NULL;
-    alt_split(head, &a, &b);
-    list_print(&a);
-    list_print(&b);
     return 0;
+}
+
+//Insertion sort
+void insertion_sort(struct node** head){
+    struct node* final = NULL;
+    struct node* current = *head;
+    while(current != NULL){
+        struct node* temp = current->next;
+        insert_sorted(&final, current);
+        current = temp;
+    }
+    *head = final;
+}
+
+//Insert into sorted list 1 into {2, 3, 5} -> {1, 2, 3, 5}
+void insert_sorted(struct node** head, struct node* new_node){
+    if(*head == NULL || (*head)->data >= new_node->data){
+        new_node->next = *head;
+        *head = new_node;
+    }
+    else{
+        struct node* current = *head;
+        struct node* prev = NULL;
+        while( current != NULL && (current->data < new_node->data) ){
+            prev = current;
+            current = current->next;
+        }
+        new_node->next = current;
+        prev->next = new_node;
+    }
 }
 
 //Split into 2 lists -> {1, 2, ,3, 4} becomes {1, 3} and {2, 4}
