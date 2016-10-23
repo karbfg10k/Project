@@ -27,10 +27,58 @@ int sign_extend();
 //Conditionally set/clear bits
 unsigned int set_clear_bits(unsigned int num, unsigned int mask, bool flag);
 
+//Negate if cond = true
+int cond_negate(int num, bool cond);
+
+//Bit set count
+unsigned int bitset_count(int n);
+
+//Finds parity of n
+bool parity(unsigned int n);
+
+//Swap without temp vars
+void num_swap(int* a, int* b);
+
+//Swap bits temp vars
+void bit_swap(int* a, int* b);
+
+
+
 int main(){
-    printf("%u\n", set_clear_bits(3, 3, true));
-    printf("%u\n", set_clear_bits(3, 4, false));
+    int a = 1U;
+    printf("%d\n", a );
     return 0;
+}
+
+//Swap without temp vars
+void num_swap(int* a, int* b){
+    *a ^= *b;
+    *b ^= *a;
+    *a ^= *b;
+}
+
+//Finds parity of n
+bool parity(unsigned int n){
+    bool parity = false;
+    while (n){
+        parity = ! parity;
+        n &= n - 1;
+    }
+    return parity;
+}
+
+//Bit set count
+unsigned int bitset_count(int n){
+    unsigned int ctr = 0;
+    for(ctr = 0; n; ctr++)
+        n &= n - 1;
+    return ctr; 
+}
+
+//Negate if cond = true
+int cond_negate(int num, bool cond){
+    cond = !cond;
+    return (cond ^ (cond - 1)) * num;
 }
 
 unsigned int set_clear_bits(unsigned int num, unsigned int mask, bool flag){
